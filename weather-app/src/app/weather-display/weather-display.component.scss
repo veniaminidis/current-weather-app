@@ -1,5 +1,7 @@
 .main {
-    
+    min-height: 100vh;
+    // flex-grow: 1;
+    color: white;
 }
 /* Sunny */
 // .sunny-background {
@@ -20,17 +22,17 @@
   
   /* Rainy */
   .rainy-background {
-    background: linear-gradient(to bottom, #2c3e50, #bdc3c7);
+    background: linear-gradient(to bottom, #bdc3c7, #2c3e50);
   }
   
   /* Snowy */
   .snowy-background {
-    background: linear-gradient(to bottom, #7f8c8d, #ffffff);
+    background: linear-gradient(to bottom, #eeeeee, #7f8c8d);
   }
   
   /* Nighttime */
-  .nighttime-background {
-    background: linear-gradient(to bottom, #2c3e50, #000000);
+  .clear-night-background {
+    background: linear-gradient(to bottom, #003366, #000000);
   }
   /* Clear Sky */
 .clear-sky-background {
@@ -40,12 +42,11 @@
   /* Cloudy Night */
   .cloudy-night-background {
     background: linear-gradient(to bottom, #6c757d, #343a40);
-    color: white;
   }
   
   /* Rainy Night */
   .rainy-night-background {
-    background: linear-gradient(to bottom, #003366, #000000);
+    background: linear-gradient(to bottom, #2c3e50, #000000);
   }
   
   /* Snowy Night */
@@ -58,14 +59,20 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    img {
+        filter: drop-shadow(gray 0 0 10px);
+        margin-top: 20px;
+    }
     h2 {
         font-size: 2rem;
         margin-bottom: 0;
+        filter: drop-shadow(gray 0 0 20px);
     }
     .temperature {
         font-size: 2rem;
         text-align: end;
         margin: 0;
+        filter: drop-shadow(gray 0 0 10px);
         span {
             font-size: 6rem;
         }
@@ -74,9 +81,38 @@
         margin-top: 0;
         font-size: 2rem;
         font-weight: lighter;
+        filter: drop-shadow(gray 0 0 10px);
     }
     p {
         margin: 0;
         font-weight: lighter;
+        filter: drop-shadow(gray 0 0 10px);
     }
+}
+
+.moreInfo {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 20px;
+
+    margin: 50px 20px;
+    padding: 20px;
+    background-color: rgba($color: white, $alpha: 0.2);
+    border: 1px solid white;
+    border-radius: 20px;
+
+    .gridTitle {
+        color: lightgray;
+        margin-top: 0;
+        margin-bottom: 5px;
+    }
+    .gridContent {
+        font-size: 1.7rem;
+        margin: 0;
+        font-weight: lighter;
+    }
+}
+
+.line {
+    border: 1px solid transparent;
 }
