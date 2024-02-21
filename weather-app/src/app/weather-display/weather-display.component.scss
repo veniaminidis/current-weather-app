@@ -1,0 +1,82 @@
+.main {
+    
+}
+/* Sunny */
+// .sunny-background {
+//     margin: 0;
+//     background: linear-gradient(to bottom, #ffec65, #ff7300);
+//     background: linear-gradient(to bottom, #c0c0c0, #808080);
+//     background: linear-gradient(to bottom, #2c3e50, #bdc3c7);
+//     background: linear-gradient(to bottom, #7f8c8d, #ffffff);
+//     background: linear-gradient(to bottom, #2c3e50, #000000);
+//     background: linear-gradient(to bottom, #003366, #000000);
+//     background: linear-gradient(to bottom, #89cff0, #68a3e0);
+//   }
+  
+  /* Cloudy */
+  .cloudy-background {
+    background: linear-gradient(to bottom, #c0c0c0, #808080);
+  }
+  
+  /* Rainy */
+  .rainy-background {
+    background: linear-gradient(to bottom, #2c3e50, #bdc3c7);
+  }
+  
+  /* Snowy */
+  .snowy-background {
+    background: linear-gradient(to bottom, #7f8c8d, #ffffff);
+  }
+  
+  /* Nighttime */
+  .nighttime-background {
+    background: linear-gradient(to bottom, #2c3e50, #000000);
+  }
+  /* Clear Sky */
+.clear-sky-background {
+    background: linear-gradient(to bottom, #89cff0, #68a3e0);
+  }
+  
+  /* Cloudy Night */
+  .cloudy-night-background {
+    background: linear-gradient(to bottom, #6c757d, #343a40);
+    color: white;
+  }
+  
+  /* Rainy Night */
+  .rainy-night-background {
+    background: linear-gradient(to bottom, #003366, #000000);
+  }
+  
+  /* Snowy Night */
+  .snowy-night-background {
+    background: linear-gradient(to bottom, #7f8c8d, #2c3e50);
+  }
+  
+
+.mainInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h2 {
+        font-size: 2rem;
+        margin-bottom: 0;
+    }
+    .temperature {
+        font-size: 2rem;
+        text-align: end;
+        margin: 0;
+        span {
+            font-size: 6rem;
+        }
+    }
+    h3 {
+        margin-top: 0;
+        font-size: 2rem;
+        font-weight: lighter;
+    }
+    p {
+        margin: 0;
+        font-weight: lighter;
+    }
+}
