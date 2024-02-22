@@ -1,92 +1,111 @@
 .main {
     min-height: 100vh;
-    // flex-grow: 1;
     color: white;
 }
-/* Sunny */
-// .sunny-background {
-//     margin: 0;
-//     background: linear-gradient(to bottom, #ffec65, #ff7300);
-//     background: linear-gradient(to bottom, #c0c0c0, #808080);
-//     background: linear-gradient(to bottom, #2c3e50, #bdc3c7);
-//     background: linear-gradient(to bottom, #7f8c8d, #ffffff);
-//     background: linear-gradient(to bottom, #2c3e50, #000000);
-//     background: linear-gradient(to bottom, #003366, #000000);
-//     background: linear-gradient(to bottom, #89cff0, #68a3e0);
-//   }
-  
-  /* Cloudy */
-  .cloudy-background {
+
+/* Cloudy */
+.cloudy-background {
     background: linear-gradient(to bottom, #c0c0c0, #808080);
-  }
-  
-  /* Rainy */
-  .rainy-background {
+}
+
+/* Rainy */
+.rainy-background {
     background: linear-gradient(to bottom, #bdc3c7, #2c3e50);
-  }
-  
-  /* Snowy */
-  .snowy-background {
+}
+
+/* Snowy */
+.snowy-background {
     background: linear-gradient(to bottom, #eeeeee, #7f8c8d);
-  }
-  
-  /* Nighttime */
-  .clear-night-background {
+}
+
+/* Clear night */
+.clear-night-background {
     background: linear-gradient(to bottom, #003366, #000000);
-  }
-  /* Clear Sky */
+}
+
+/* Clear Sky */
 .clear-sky-background {
     background: linear-gradient(to bottom, #89cff0, #68a3e0);
-  }
-  
-  /* Cloudy Night */
-  .cloudy-night-background {
+}
+
+/* Cloudy Night */
+.cloudy-night-background {
     background: linear-gradient(to bottom, #6c757d, #343a40);
-  }
-  
-  /* Rainy Night */
-  .rainy-night-background {
+}
+
+/* Rainy Night */
+.rainy-night-background {
     background: linear-gradient(to bottom, #2c3e50, #000000);
-  }
-  
-  /* Snowy Night */
-  .snowy-night-background {
+}
+
+/* Snowy Night */
+.snowy-night-background {
     background: linear-gradient(to bottom, #7f8c8d, #2c3e50);
-  }
-  
+}
+
 
 .mainInfo {
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    .bgImage {
+        opacity: 0.6;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: auto;
+        -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 1)), to(rgba(0, 0, 0, 0)));
+        mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+    }
+
     img {
         filter: drop-shadow(gray 0 0 10px);
-        margin-top: 20px;
+
     }
+
     h2 {
         font-size: 2rem;
         margin-bottom: 0;
         filter: drop-shadow(gray 0 0 20px);
     }
+
     .temperature {
         font-size: 2rem;
         text-align: end;
         margin: 0;
         filter: drop-shadow(gray 0 0 10px);
+
         span {
             font-size: 6rem;
         }
     }
+
     h3 {
-        margin-top: 0;
+        margin-bottom: 0;
+        margin-top: 50px;
         font-size: 2rem;
         font-weight: lighter;
         filter: drop-shadow(gray 0 0 10px);
     }
+
     p {
         margin: 0;
         font-weight: lighter;
         filter: drop-shadow(gray 0 0 10px);
+    }
+
+    .mainInfoDirection {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .infoWrap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 }
 
@@ -97,7 +116,7 @@
 
     margin: 50px 20px;
     padding: 20px;
-    background-color: rgba($color: white, $alpha: 0.2);
+    background-color: rgba($color: white, $alpha: 0.1);
     border: 1px solid white;
     border-radius: 20px;
 
@@ -106,13 +125,76 @@
         margin-top: 0;
         margin-bottom: 5px;
     }
+
     .gridContent {
-        font-size: 1.7rem;
+        font-size: 1.5rem;
         margin: 0;
         font-weight: lighter;
+    }
+
+    .gridItem {
+        width: 90%;
+        display: flex;
+
+        img {
+            height: 60px;
+            width: 60px;
+        }
+    }
+
+    .itemContent {
+        height: 100%;
+
+        span {
+            font-size: 1rem;
+        }
     }
 }
 
 .line {
     border: 1px solid transparent;
+}
+
+
+@media only screen and (min-width: 768px) {
+    .main {
+        padding: 0 20%;
+    }
+
+    .mainInfoDirection {
+        margin-top: 50px;
+        width: 100%;
+        flex-direction: row !important;
+        justify-content: space-between;
+    }
+
+    .infoWrap {
+        width: 30%;
+
+        h3 {
+            margin: 0;
+        }
+    }
+
+    .gridTitle {
+        font-size: 1.5rem;
+    }
+
+    .gridContent {
+        font-size: 1.8rem !important;
+    }
+
+    .gridItem {
+        img {
+            margin-right: 10px;
+            height: 80px !important;
+            width: 80px !important;
+        }
+    }
+
+    .itemContent {
+        span {
+            font-size: 1.3rem !important;
+        }
+    }
 }

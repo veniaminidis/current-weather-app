@@ -1,40 +1,67 @@
 <div class="main" [ngClass]="getWeatherBackground()" *ngIf="weatherData">
     <div class="mainInfo">
+        <img class="bgImage" [src]="getBackgroundImage()" alt="">
         <h2>{{ weatherData.name }}</h2>
         <p>{{ getDayDate() }} - {{ currentTime | date: 'dd/MM' }}</p>
-        <img [src]="'https://openweathermap.org/img/wn/' + weatherData.weather[0].icon + '@4x.png'" alt="">
-        <h3>{{ weatherData.weather[0].main }}</h3>
-        <p class="temperature"><span>{{ Math.round(weatherData.main.temp - 272) }}</span>&deg;C</p>
-        <p>Feels like: {{ Math.round(weatherData.main.feels_like - 272) }}&deg;C</p>
-        
+        <div class="mainInfoDirection">
+            <div class="infoWrap">
+                <h3>{{ weatherData.weather[0].main }}</h3>
+                <p>{{ weatherData.weather[0].description }}</p>
+            </div>
+            <div class="infoWrap">
+                <img [src]="'https://openweathermap.org/img/wn/' + weatherData.weather[0].icon + '@4x.png'" alt="">
+            </div>
+            <div class="infoWrap">
+                <p class="temperature"><span>{{ Math.round(weatherData.main.temp - 272) }}</span>&deg;C</p>
+                <p>Feels like: {{ Math.round(weatherData.main.feels_like - 272) }}&deg;C</p>
+            </div>
+        </div>
         <!-- <p>{{ weatherData.weather[0].description }}</p> -->
     </div>
     <div class="moreInfo">
         <div class="gridItem">
-            <p class="gridTitle">Sunrise</p>
-            <p class="gridContent">{{sunrise | date:'HH:mm'}}</p>
+            <img src="assets/icons/sunrise.svg" alt="">
+            <div class="itemContent">
+                <p class="gridTitle">Sunrise</p>
+                <p class="gridContent">{{sunrise | date:'HH:mm'}}</p>
+            </div>
         </div>
         <div class="gridItem">
-            <p class="gridTitle">Sunset</p>
-            <p class="gridContent">{{sunset | date:'HH:mm'}}</p>
-        </div>
-
-        <div class="gridItem">
-            <p class="gridTitle">Real feel</p>
-            <p class="gridContent">{{ Math.round(weatherData.main.feels_like - 272) }}&deg;C</p>
-        </div>
-        <div class="gridItem">
-            <p class="gridTitle">Humidity</p>
-            <p class="gridContent">{{ weatherData.main.humidity }}%</p>
+            <img src="assets/icons/sunset.svg" alt="">
+            <div class="itemContent">
+                <p class="gridTitle">Sunset</p>
+                <p class="gridContent">{{sunset | date:'HH:mm'}}</p>
+            </div>
         </div>
 
         <div class="gridItem">
-            <p class="gridTitle">Wind speed</p>
-            <p class="gridContent">{{ weatherData.wind.speed }} m/s</p>
+            <img src="assets/icons/temperature.svg" alt="">
+            <div class="itemContent">
+                <p class="gridTitle">Real feel</p>
+                <p class="gridContent">{{ Math.round(weatherData.main.feels_like - 272) }}<span>&deg;C</span></p>
+            </div>
         </div>
         <div class="gridItem">
-            <p class="gridTitle">Pressure</p>
-            <p class="gridContent">{{ weatherData.wind.speed }} m/s</p>
+            <img src="assets/icons/humidity.svg" alt="">
+            <div class="itemContent">
+                <p class="gridTitle">Humidity</p>
+                <p class="gridContent">{{ weatherData.main.humidity }}<span>%</span></p>
+            </div>
+        </div>
+
+        <div class="gridItem">
+            <img src="assets/icons/wind.svg" alt="">
+            <div class="itemContent">
+                <p class="gridTitle">Wind speed</p>
+                <p class="gridContent">{{ Math.round(weatherData.wind.speed * 3.6)}} <span>k/h</span></p>
+            </div>
+        </div>
+        <div class="gridItem">
+            <img src="assets/icons/pressure.svg" alt="">
+            <div class="itemContent">
+                <p class="gridTitle">Pressure</p>
+                <p class="gridContent">{{ weatherData.main.pressure }} <span>mbar</span></p>
+            </div>
         </div>
     </div>
     <div class="line"></div>

@@ -22,26 +22,23 @@ export class WeatherDisplayComponent implements OnInit {
   }
 
   getWeatherData() {
-    // Check if weather data is stored in local storage and if it's not expired
     const storedWeatherData = localStorage.getItem('weatherData');
     const storedTimestamp = localStorage.getItem('weatherTimestamp');
 
     if (storedWeatherData && storedTimestamp) {
       const currentTime = new Date().getTime();
       const storedTime = parseInt(storedTimestamp, 10);
-      if (currentTime - storedTime < 15 * 60 * 1000) { // Check if data is less than 15 minutes old
+      if (currentTime - storedTime < 15 * 60 * 1000) {
         this.weatherData = JSON.parse(storedWeatherData);
-        return; // Exit the function if stored data is valid
+        return;
       }
     }
 
-    // If stored data is expired or not available, fetch new data from the API
     this.WeatherAPIService.getCurrentWeather("Thessaloniki", "0b5bb63b15d6afbdcbe481810a3a4e52").subscribe(
       (data: any) => {
         this.weatherData = data;
         console.log(data);
 
-        // Store the fetched weather data and timestamp in local storage
         localStorage.setItem('weatherData', JSON.stringify(data));
         localStorage.setItem('weatherTimestamp', new Date().getTime().toString());
       },
@@ -53,22 +50,20 @@ export class WeatherDisplayComponent implements OnInit {
 
   getWeatherBackground() {
     if (!this.weatherData) {
-      return ''; // No weather data, return empty string (no background)
+      return '';
     }
     this.sunrise = new Date(this.weatherData.sys.sunrise * 1000);
     this.sunset = new Date(this.weatherData.sys.sunset * 1000);
 
-    // Get the weather condition from the data (assuming 'weather' is an array with at least one element)
     const weatherCondition = this.weatherData.weather[0].main.toLowerCase();
 
     this.currentTime = new Date((this.weatherData.dt * 1000) + (this.weatherData.timezone * 1000));
 
-    const isNighttime = this.currentTime >= this.sunrise || this.currentTime <= this.sunset;
+    const isNighttime = this.currentTime >= this.sunset || this.currentTime <= this.sunrise;
 
-    // Determine the background class based on the weather condition and time of day
     switch (weatherCondition) {
       case 'clear':
-        return isNighttime ? 'clear-night-background' : 'sunny-background';
+        return isNighttime ? 'clear-night-background' : 'clear-sky-background';
       case 'clouds':
         return isNighttime ? 'cloudy-night-background' : 'cloudy-background';
       case 'rain':
@@ -77,7 +72,29 @@ export class WeatherDisplayComponent implements OnInit {
       case 'snow':
         return isNighttime ? 'snowy-night-background' : 'snowy-background';
       default:
-        return isNighttime ? 'clear-night-background' : ''; // Default to empty string if weather condition is unknown
+        return isNighttime ? 'clear-night-background' : '';
+    }
+  }
+
+  getBackgroundImage() {
+    if (!this.weatherData) {
+      return '';
+    }
+
+    const weatherCondition = this.weatherData.weather[0].main.toLowerCase();
+    
+    switch (weatherCondition) {
+      case 'clear':
+        return '';
+      case 'clouds':
+        return "https://www.freeiconspng.com/uploads/white-clouds-png-15.png";
+      case 'rain':
+      case 'drizzle':
+        return "https://www.freeiconspng.com/uploads/rain-png-clipart-18.png";
+      case 'snow':
+        return "https://www.freeiconspng.com/uploads/white-snowflake-png-2.png";
+      default:
+        return '';
     }
   }
 
